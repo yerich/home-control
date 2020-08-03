@@ -59,7 +59,7 @@ export default function Slider({value, min, max, onChange, onDone}) {
       <style jsx>{`
         .slider { position: relative; height: 40px; flex: 1;}
         .slider-track { width: calc(100% - 40px); height: 40px; position: absolute; top: 0; left: 20px;}
-        .slider-track::before { content: " "; position: absolute; top: 19px; left: 10px; width: calc(100% - 20px); background: #212121; height: 2px;}
+        .slider-track::before { content: " "; position: absolute; top: 19px; width: 100%; background: #212121; height: 2px;}
         .slider-thumb { width: 40px; height: 40px; position: absolute; top: 0; border-radius: 20px; background: #333; border: 2px solid #CCC;}
         .slider-thumb.active { background: #CCC;}
       `}</style>

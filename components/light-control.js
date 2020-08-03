@@ -58,7 +58,9 @@ function LightOptions({lights, refresh, toggleOptions}) {
     <div className={"light-mode" + (currentMode === "auto-full" ? " selected" : "")} onClick={() => selectMode("auto-full")}>Full</div>
     <div className={"light-mode" + (currentMode === "custom" ? " selected" : "")} onClick={() => selectMode("custom")}>Custom</div>
 
-    {currentMode === "custom" && <CustomSliders lights={lights} />}
+    {currentMode === "custom" && <>
+      <CustomSliders lights={lights} />
+    </>}
 
     <style jsx>{`
       .close-light-options { position: absolute; top: 10px; right: 20px; font-size: 40px; padding: 20px;}

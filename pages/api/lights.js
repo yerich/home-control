@@ -140,6 +140,9 @@ export const initiate = () => {
                             light.mode = "auto";
                         }
                     }
+                    if (state.mode === "color") {
+                        light.customColor = state.color;
+                    }
                 } else {
                     light.mode = "off";
                 }
@@ -177,11 +180,11 @@ const doSetMode = (light, mode) => {
     } else if (mode === "on") {
         light.control.setColorAndWhites(0, 0, 0, 255, 0);
     } else if (mode === "custom") {
-        let [red, green, blue] = [255, 255, 255];
         if (light.customColor) {
-            [red, green, blue] = [light.customColor.red, light.customColor.green, light.customColor.blue];
+            light.control.setColor(light.customColor.red, light.customColor.green, light.customColor.blue);
+        } else {
+            light.control.setColor(255, 255, 255);
         }
-        light.control.setColor(red, green, blue);
     }
 }
 

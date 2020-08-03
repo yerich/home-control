@@ -37,6 +37,7 @@ export default function Home() {
         <title>Home control 2</title>
         <link rel="stylesheet" href="/global.css" />
         <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
+        <meta name="viewport" content="width=1280, user-scalable=no" />
       </Head>
 
       <main>
