@@ -45,7 +45,7 @@ export default function Home() {
 
     const timer = setInterval(() => {
       fetch("/api/weather").then(res => res.json()).then(setWeather);
-    }, (120000 - time % 120000));
+    }, (600000 - time % 600000));
 
     return () => clearInterval(timer);
   }, []);
@@ -68,9 +68,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  if (!weather.map) {
-    debugger;
-  }
   const weatherEntries = (weather || []).map((w, i) => <WeatherEntry data={w} index={i} key={i} />)
 
   return (
@@ -99,7 +96,7 @@ export default function Home() {
               {weatherEntries}
             </div>
 
-            {showDetailedWeather  &&<div className="detailed-weather">
+            {showDetailedWeather && <div className="detailed-weather">
               <iframe src={"https://www.meteoblue.com/en/weather/widget/three/toronto_canada_6167865?geoloc=fixed&amp;nocurrent=0&amp;noforecast=0&amp;" +
                 "days=5&amp;tempunit=CELSIUS&amp;windunit=KILOMETER_PER_HOUR&amp;layout=dark&amp;location_url=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather" +
                 "%2Fwidget%2Fthree%2Ftoronto_canada_6167865&amp;location_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fweek%2Ftoronto_canada_6167865" +
