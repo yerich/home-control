@@ -92,20 +92,20 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="weather-wrapper">
+            <div className="weather-wrapper" onClick={() => setShowDetailedWeather(true)}>
               {weatherEntries}
             </div>
 
             {showDetailedWeather && <div className="detailed-weather">
-              <iframe src={"https://www.meteoblue.com/en/weather/widget/three/toronto_canada_6167865?geoloc=fixed&amp;nocurrent=0&amp;noforecast=0&amp;" +
-                "days=5&amp;tempunit=CELSIUS&amp;windunit=KILOMETER_PER_HOUR&amp;layout=dark&amp;location_url=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather" +
-                "%2Fwidget%2Fthree%2Ftoronto_canada_6167865&amp;location_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fweek%2Ftoronto_canada_6167865" +
-                "&amp;nolocation_url=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fwidget%2Fthree&amp;nolocation_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen" +
-                "%2Fweather%2Fweek%2Findex&amp;dailywidth=115&amp;tracking=%3Futm_source%3Dweather_widget%26utm_medium%3Dlinkus%26utm_content%3Dthree%26" +
-                "utm_campaign%3DWeather%252BWidget"} frameborder="0" scrolling="NO" allowtransparency="true" 
-                sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style={{width: 720, height: 600}}></iframe>
-              <div>
-                <a href="https://www.meteoblue.com/en/weather/week/toronto_canada_6167865?utm_source=weather_widget&amp;utm_medium=linkus&amp;utm_content=three&amp;utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a>
+              <div className="detailed-weather-close" onClick={() => setShowDetailedWeather(false)}><i className="fa fa-times"></i></div>
+              <div className="detailed-weather-inner">
+                <iframe src={"https://www.meteoblue.com/en/weather/widget/three/toronto_canada_6167865?geoloc=fixed&nocurrent=0&noforecast=0&" +
+                  "days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image&location_url=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather" +
+                  "%2Fwidget%2Fthree%2Ftoronto_canada_6167865&location_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fweek%2Ftoronto_canada_6167865" +
+                  "&nolocation_url=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fwidget%2Fthree&nolocation_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen" +
+                  "%2Fweather%2Fweek%2Findex&dailywidth=115&tracking=%3Futm_source%3Dweather_widget%26utm_medium%3Dlinkus%26utm_content%3Dthree%26" +
+                  "utm_campaign%3DWeather%252BWidget"} frameborder="0" scrolling="NO" allowtransparency="true" 
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style={{width: 840, height: 600}}></iframe>
               </div>
             </div>}
           </div>
@@ -150,6 +150,9 @@ export default function Home() {
         .border { width: 1px; height: 93%; align-self: center; background: #666;}
 
         .weather-wrapper { text-align: center; margin-bottom: 20px;}
+        .detailed-weather { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background: rgba(0, 0, 0, 0.6);}
+        .detailed-weather-inner { position: absolute; top: 50px; left: 230px;}
+        .detailed-weather-close { position: absolute; top: 20px; right: 180px; font-size: 40px; width: 60px; height: 60px; text-align: center; border: 2px solid #444; line-height: 51px; z-index: 3; background: #000; border-radius: 30px;}
       `}</style>
 
       <style jsx global>{`
