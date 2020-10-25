@@ -109,7 +109,7 @@ const timeBasedLight = (light) => {
     if (light.colorOnly) {
         light.control.setColorWithBrightness(255, 125, 102, factor * 100);
     } else {
-        light.control.setColorAndWhites(0, 0, 0, Math.round((255 - position) * factor), Math.round(position * factor));
+        light.control.setWhites(Math.round((255 - position) * factor), Math.round(position * factor));
     }
 }
 
@@ -178,7 +178,7 @@ const doSetMode = (light, mode) => {
     } else if (mode && mode.startsWith("auto")) {
         timeBasedLight(light, mode);
     } else if (mode === "on") {
-        light.control.setColorAndWhites(0, 0, 0, 255, 0);
+        light.control.setWhites(255, 0);
     } else if (mode === "custom") {
         if (light.customColor) {
             light.control.setColor(light.customColor.red, light.customColor.green, light.customColor.blue);
