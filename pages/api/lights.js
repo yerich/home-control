@@ -47,6 +47,17 @@ const lights = [
         prefix: "desk",
     },
     {
+        name: "monitor-1",
+        ip: "192.168.2.150",
+        apply_masks: false,
+        cold_white_support: false,
+        colorOnly: true,
+        colorOnlyType: 2,
+        requireOnCommand: true,
+        log_all_received: true,
+        prefix: "monitor",
+    },
+    {
         name: "standing-1",
         ip: "192.168.2.146",
         apply_masks: true,
@@ -107,7 +118,20 @@ const timeBasedLight = (light) => {
     }
     
     if (light.colorOnly) {
-        light.control.setColorWithBrightness(255, 125, 102, factor * 100);
+        let day, night;
+        if (light.colorOnlyType === 2) {
+            day = [255, 222, 78];
+            night = [255, 112, 11];
+        } else {
+            day = [255, 136, 115];
+            night = [255, 82, 37];
+        }
+        light.control.setColorWithBrightness(
+            day[0] * (position / 255) + night[0] * (1 - position / 255), 
+            day[1] * (position / 255) + night[1] * (1 - position / 255), 
+            day[2] * (position / 255) + night[2] * (1 - position / 255), 
+            factor * 100
+        );
     } else {
         light.control.setWhites(Math.round((255 - position) * factor), Math.round(position * factor));
     }
@@ -172,6 +196,9 @@ const doSetMode = (light, mode) => {
     light.mode = mode;
     if (mode !== "off") {
         light.lastMode = mode;
+        if (light.requireOnCommand) {
+            light.control.turnOn();
+        }
     }
     if (mode === "off") {
         light.control.turnOff();

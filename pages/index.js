@@ -122,6 +122,10 @@ export default function Home() {
                 <LightControl lights={lights.filter(l => l.name.startsWith("desk"))} refresh={refreshLights} />
               </div>
               <div className="control-row">
+                <div className="control-label">Monitor</div>
+                <LightControl lights={lights.filter(l => l.name.startsWith("monitor"))} refresh={refreshLights} />
+              </div>
+              <div className="control-row">
                 <div className="control-label">Standing Light</div>
                 <LightControl lights={lights.filter(l => l.name.startsWith("standing"))} refresh={refreshLights} />
               </div>
