@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from "react";
 import moment from "moment";
 import LightControl from "../components/light-control";
+import { checkAuth } from "../lib/auth";
 
 const WeatherEntry = ({data, index}) => {
   return <div className="weather-entry">
@@ -24,6 +25,16 @@ const WeatherEntry = ({data, index}) => {
     `}</style>
   </div>
 }
+
+export const getServerSideProps = async ({req, res}) => {
+  try {
+    await checkAuth(req, res);
+  } catch {
+    return {notFound: true};
+  }
+
+  return {props: {}}
+};
 
 export default function Home() {
   const [time, setTime] = useState(Date.now());

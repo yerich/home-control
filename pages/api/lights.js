@@ -2,6 +2,7 @@ import url from "url";
 import { Control } from "magic-home";
 import SunCalc from "suncalc";
 import * as storage from "node-persist";
+import { checkAuth } from "../../lib/auth.js";
 
 storage.init();
 
@@ -250,7 +251,9 @@ export const setCustomColor = (prefix, red, green, blue) => {
 }
 
 initiate();
-export default (req, res) => {
+export default async (req, res) => {
+    await checkAuth(req);
+
     const query = url.parse(req.url,true).query;
     res.statusCode = 200;
 

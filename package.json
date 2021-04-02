@@ -10,7 +10,7 @@
   "dependencies": {
     "magic-home": "github:yerich/node-magichome",
     "moment": "^2.27.0",
-    "next": "9.4.4",
+    "next": "10.1.3",
     "node-persist": "^3.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
