@@ -100,7 +100,7 @@ const timeBasedLight = (light) => {
         position = 255;
     } else if (sunpos < -2) {
         position = 0;
-        
+
         if (timeSeconds > 22 * 60 * 60 || timeSeconds < 5 * 60 * 60) {
             factor = 0.1;
         } else if (timeSeconds > 21.5 * 60 * 60) {
@@ -117,7 +117,7 @@ const timeBasedLight = (light) => {
     } else if (light.mode === "auto-full") {
         factor = 1.0;
     }
-    
+
     if (light.colorOnly) {
         let day, night;
         if (light.colorOnlyType === 2) {
@@ -128,9 +128,9 @@ const timeBasedLight = (light) => {
             night = [255, 82, 37];
         }
         light.control.setColorWithBrightness(
-            day[0] * (position / 255) + night[0] * (1 - position / 255), 
-            day[1] * (position / 255) + night[1] * (1 - position / 255), 
-            day[2] * (position / 255) + night[2] * (1 - position / 255), 
+            day[0] * (position / 255) + night[0] * (1 - position / 255),
+            day[1] * (position / 255) + night[1] * (1 - position / 255),
+            day[2] * (position / 255) + night[2] * (1 - position / 255),
             factor * 100
         );
     } else {
@@ -146,7 +146,7 @@ export const initiate = () => {
 
     storage.getItem("lights").then(cachedLights => {
         console.log("cached lights", cachedLights);
-    
+
         lights.forEach((light) => {
             light.control = new Control(light.ip, {
                 cold_white_support: light.cold_white_support,
@@ -177,7 +177,7 @@ export const initiate = () => {
                 }
             });
         });
-    
+
         clearInterval(timeBasedLightsInterval);
         console.log("Lights initiated 2");
     });
@@ -252,7 +252,12 @@ export const setCustomColor = (prefix, red, green, blue) => {
 
 initiate();
 export default async (req, res) => {
-    await checkAuth(req);
+    try {
+        await checkAuth(req);
+    } catch (e) {
+        res.status(401).send("Unauthorized");
+        return;
+    }
 
     const query = url.parse(req.url,true).query;
     res.statusCode = 200;

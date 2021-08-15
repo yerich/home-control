@@ -18,7 +18,7 @@ const WeatherEntry = ({data, index}) => {
       .weather-entry-icon { font-size: 60px; opacity: 0.7; text-align: center; float: left; margin-right: 20px;}
       .weather-entry-temperature { font-size: 60px; display: inline-block;}
       .weather-entry-description { font-size: 25px; display: inline-block; clear: both; letter-spacing: -1px; width: 170px;}
-  
+
       .weather-detailed-wrapper { display: none; text-align: center; position: absolute; top: 585px; width: 100%; height: 600px; background: #000;}
       .weather-detailed-wrapper iframe { text-align: center; margin-top:200px; transform: scale(1.5);}
       .weather-detailed-wrapper a { display: none;}
@@ -41,7 +41,7 @@ export default function Home() {
   const [lights, setLights] = useState([]);
   const [weather, setWeather] = useState([]);
   const [showDetailedWeather, setShowDetailedWeather] = useState(false);
-  
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(Date.now());
@@ -50,7 +50,7 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-    
+
   useEffect(() => {
     fetch("/api/weather").then(res => res.json()).then(setWeather);
 
@@ -60,7 +60,7 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
-  
+
 
   const refreshLights = () => {
     fetch("/api/lights?action=status").then(res => res.json()).then(setLights);
@@ -115,12 +115,12 @@ export default function Home() {
                   "%2Fwidget%2Fthree%2Ftoronto_canada_6167865&location_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fweek%2Ftoronto_canada_6167865" +
                   "&nolocation_url=https%3A%2F%2Fwww.meteoblue.com%2Fen%2Fweather%2Fwidget%2Fthree&nolocation_mainUrl=https%3A%2F%2Fwww.meteoblue.com%2Fen" +
                   "%2Fweather%2Fweek%2Findex&dailywidth=115&tracking=%3Futm_source%3Dweather_widget%26utm_medium%3Dlinkus%26utm_content%3Dthree%26" +
-                  "utm_campaign%3DWeather%252BWidget"} frameborder="0" scrolling="NO" allowtransparency="true" 
+                  "utm_campaign%3DWeather%252BWidget"} frameborder="0" scrolling="NO" allowtransparency="true"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style={{width: 840, height: 600}}></iframe>
               </div>
             </div>}
           </div>
-          
+
           <div className="border"></div>
           <div className="right">
             <div className="light-controls">
@@ -181,7 +181,7 @@ export default function Home() {
         }
 
         * { box-sizing: border-box; }
-        
+
         button { display: inline-block; background: transparent; color: #FFF; font-size: 30px; border: 1px solid #CCC; padding: 10px 20px; width: 3em;}
         button:active, button:focus { outline: 0 !important; }
       `}</style>
