@@ -64,7 +64,23 @@ const lights = [
         apply_masks: true,
         cold_white_support: true,
         log_all_received: true,
-        prefix: "standing",
+        prefix: "standing-1",
+    },
+    {
+        name: "standing-2a",
+        ip: "192.168.2.158",
+        apply_masks: true,
+        cold_white_support: true,
+        log_all_received: true,
+        prefix: "standing-2",
+    },
+    {
+        name: "standing-2b",
+        ip: "192.168.2.159",
+        apply_masks: true,
+        cold_white_support: true,
+        log_all_received: true,
+        prefix: "standing-2",
     },
     {
         name: "display-case-1",
@@ -155,7 +171,7 @@ export const initiate = () => {
             });
             light.control.queryState((err, state) => {
                 light.status = state;
-                if (state.on) {
+                if (state?.on) {
                     if (cachedLights[light.name]) {
                         if (cachedLights[light.name].mode !== "off") {
                             light.mode = cachedLights[light.name].mode;
