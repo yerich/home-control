@@ -145,6 +145,14 @@ export default function Home() {
                 <LightControl lights={lights.filter(l => l.name.startsWith("standing-2"))} refresh={refreshLights} />
               </div>
               <div className="control-row">
+                <div className="control-label">Ceiling 1</div>
+                <LightControl lights={lights.filter(l => l.name.startsWith("ceiling-a"))} refresh={refreshLights} />
+              </div>
+              <div className="control-row">
+                <div className="control-label">Ceiling 2</div>
+                <LightControl lights={lights.filter(l => l.name.startsWith("ceiling-b"))} refresh={refreshLights} />
+              </div>
+              <div className="control-row">
                 <div className="control-label">Display Case</div>
                 <LightControl lights={lights.filter(l => l.name.startsWith("display-case"))} refresh={refreshLights} />
               </div>
