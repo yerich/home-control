@@ -9,7 +9,7 @@ storage.init();
 const lights = [
     {
         name: "kitchen-1",
-        ip: "192.168.2.163",
+        ip: "192.168.2.173",
         apply_masks: true,
         cold_white_support: true,
         log_all_received: true,
