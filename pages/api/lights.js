@@ -204,6 +204,8 @@ const timeBasedLight = (light) => {
             factor * 100
         );
     } else {
+        if (light.lastSetTimeWhites && light.lastSetTimeWhites[0] === Math.round((255 - position) * factor) && light.lastSetTimeWhites[1] === Math.round(position * factor)) return;
+        light.lastSetTimeWhites = [Math.round((255 - position) * factor), Math.round(position * factor)];
         light.control.setWhites(Math.round((255 - position) * factor), Math.round(position * factor));
     }
 }
@@ -265,6 +267,7 @@ const saveCache = () => {
 const doSetMode = (light, mode) => {
     console.log("Setting light " + light.name + " to " + mode);
     light.mode = mode;
+    light.lastSetTimeWhites = null;
     if (mode !== "off") {
         light.lastMode = mode;
         if (light.requireOnCommand) {
