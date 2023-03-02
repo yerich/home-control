@@ -33,7 +33,7 @@ const lights = [
     },
     {
         name: "kitchen-4",
-        ip: "192.168.2.162",
+        ip: "192.168.2.174",
         apply_masks: true,
         cold_white_support: true,
         log_all_received: true,
@@ -60,7 +60,7 @@ const lights = [
     },
     {
         name: "standing-1",
-        ip: "192.168.2.173",   // Note: not functioning
+        ip: "192.168.2.175",
         apply_masks: true,
         cold_white_support: true,
         log_all_received: true,
